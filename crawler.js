@@ -101,15 +101,15 @@ function getArticle(i) {
                             if (replycount <= 100) {
                                 replycount = "0~100";
                             } else if (replycount <= 500) {
-                                replycount = "100~500";
+                                replycount = "101~500";
                             } else if (replycount <= 1000) {
-                                replycount = "500~1000";
+                                replycount = "501~1000";
                             } else if (replycount <= 5000) {
-                                replycount = "1000~5000";
+                                replycount = "1001~5000";
                             } else if (replycount <= 10000) {
-                                replycount = "5000~10000";
+                                replycount = "5001~10000";
                             } else {
-                                replycount = "10000~";
+                                replycount = "10001~";
                             }
                         }
 
