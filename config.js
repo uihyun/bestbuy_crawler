@@ -1,6 +1,7 @@
 // configuration
 exports.page = 4;
 exports.brand = "whirlpool";
+exports.product = "washer";
 
 exports.showContents = false;
 

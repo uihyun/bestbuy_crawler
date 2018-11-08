@@ -7,14 +7,15 @@ var request = require('axios'),
 var page = config.page,
     showContents = config.showContents,
     outputType = config.outputType,
-    brand = config.brand;
+    brand = config.brand,
+    product = config.product;
 
 var posts = new Array();
 
 function getArticle(i) {
     console.log("### start ###");
     
-    var url = "https://www.bestbuy.com/site/searchpage.jsp?cp=" + i + "&id=pcat17071&st=" + brand + "%20washer";
+    var url = "https://www.bestbuy.com/site/searchpage.jsp?cp=" + i + "&id=pcat17071&st=" + brand + "%20" + product;
     console.log(url);
 
     request.get(url, {headers: {
@@ -167,7 +168,9 @@ function getArticle(i) {
                                 var month = dateOcj.getMonth() + 1;
                                 var day = dateOcj.getDate();
                                 if (month < 10)
-                                    month = "0" + month; 
+                                    month = "0" + month;
+                                if (day < 10)
+                                    day = "0" + day; 
                                 date = year + "-" + month + "-" + day;
                                 reply["replydate"] = date;
                                 var writer = data.find("div.undefined.ugc-author").text().trim().replace(/\r\n|\n|\r|\t/g,"").replace(/\"/g,"\"\"");
@@ -205,7 +208,6 @@ function getArticle(i) {
                                     else if (brand == 'whirlpool')
                                         brandStr = 'Whirlpool';
 
-    
                                     // write csv
                                     fs.appendFile('store_bestbuy_' + brand + '.csv',  '"' + post["seq"] + '","' + post["title"] + '","' + post["link"] + '","' + post["content"] + 
                                     '","' + post["modelcode"] + '","' + post["price"] + '","' + post["rating"] + '","' + post["replycount"] + '","' + reply["replydate"] + 
